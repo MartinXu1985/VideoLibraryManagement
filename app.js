@@ -24,7 +24,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
 
@@ -32,6 +32,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/userSignIn',routes.userSignIn);
 app.post('/validateUser', routes.validateUser);
+app.get('/signUp',routes.signUp);
+app.post('/createUser', routes.createUser);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

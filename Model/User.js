@@ -8,14 +8,26 @@ function User() {
 
 }
 
-User.prototype.validateUser = function(callback,fname,password)
+User.prototype.validateUser = function(callback,request)
 {
 
 	console.log("user function ");
-	userobj.validateUser(function(err,res) {
+	
+	userobj.signUp(function(err,res) {
 		callback(err,res);
 		
-	},fname,password);
+	},request.userName,request.password);
+
+};
+
+User.prototype.signUp = function(callback,request)
+{
+	
+	console.log("signUp function ");
+	userobj.signUp(function(err,res) {
+		callback(err,res);
+		
+	},request.userName,request.password);
 
 };
 

@@ -36,6 +36,29 @@ UserDao.prototype.validateUser = function(callback, username, password){
 	
 };
 
+UserDao.prototype.signUp = function(callback, username, password){
+	
+	connection.connect();
+	//console.log("USERNAME: " + username + " Password: " + password);
+	
+	var sql = 'INSERT INTO USER_DATA SET ?';
+	var data = {FNAME:username,PASSWORD:password}
+	connection.query(sql,data, function(err, result) {
+		if (err) {
+			var error = err.toString();
+			
+			console.log(error);
+		} else {
+			console.log("error is:" + err);
+			callback(err, result);
+
+		}
+
+	});
+	
+	
+};
+
 module.exports = UserDao;
 
 
