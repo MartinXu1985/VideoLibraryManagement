@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<body>
+
+<div style='float:right'>
+<a href="/SignIn">Go Back</a><br/>
+</div>
+<table border="2" border-collapse:collapse>
+<tr padding:5px>
+  <th padding:20px>Name</th>
+  <th padding:20px>Banner</th>		
+  <th padding:20px>Date</th>
+  <th padding:20px>RentAmount</th>
+  <th padding:20px>Category</th>
+  <th padding:20px>NoOfCopies</th>
+ </tr>
+<% for(var i = 0; i < result.length; i++){ %>
+<br/>
+<tr>
+<td><%= result[i].Name %></td>
+
+<td><%= result[i].Banner %></td>
+
+<td><%= result[i].Date %></td>
+
+<td><%= result[i].RentAmount %></td>
+
+<td><%= result[i].Category %></td>
+
+<td><%= result[i].NoOfCopies %><br/></td>
+</tr>
+<% } %>
+</table>
+</body>
+</html>

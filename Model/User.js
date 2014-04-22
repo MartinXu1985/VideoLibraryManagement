@@ -31,4 +31,15 @@ User.prototype.signUp = function(callback,request)
 
 };
 
+User.prototype.viewCustomers = function(callback,request)
+{
+	
+	console.log("view customers function ");
+	userobj.viewCustomers(function(err,res) {
+		callback(err,res);
+		
+	},request.userName,request.password);
+
+};
+
 module.exports = User;
