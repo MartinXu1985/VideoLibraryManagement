@@ -44,7 +44,7 @@ UserDao.prototype.createUser = function(callback, fname, lname,address,city,zip,
 	var membershipID= (Math.floor(Math.random() * 900)+100)+"-"+ (Math.floor(Math.random() * 100)+10)+"-"+ (Math.floor(Math.random() * 9000)+1000);
 	var sql = 'INSERT INTO Person SET ?';
 	//var Address = address+" "+city+" "+state+" "+zip;
-	var data = {MemberShipID:membershipID,FirstName: fname,LastName:lname,Password:lname,Address:address,City:city,ZipCode:zip,MemberTypeID:membertype};
+	var data = {MemberShipID:membershipID,FirstName: fname,LastName:lname,Password:lname,Address:address,City:city,State:state,ZipCode:zip,MemberTypeID:membertype};
 	connection.query(sql,data, function(err, result) {
 		if (err) {
 			var error = err.toString();
