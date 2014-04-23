@@ -34,6 +34,9 @@ app.get('/userSignIn',routes.userSignIn);
 app.post('/validateUser', routes.validateUser);
 app.get('/signUp',routes.signUp);
 app.post('/createUser', routes.createUser);
+app.get('/removeUser',routes.removeUser);
+app.get('/generateBill',routes.generateBill);
+app.post('/payBill/:data',routes.payBill);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

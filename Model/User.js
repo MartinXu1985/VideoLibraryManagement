@@ -31,4 +31,13 @@ User.prototype.signUp = function(callback,request)
 
 };
 
+//removeUser Model
+User.prototype.remove = function(callback,memberTypeID){
+	
+	console.log("removeUser function "+memberTypeID);
+	userobj.removeUser(function(err,res){
+		callback(err,res);
+	},memberTypeID);
+};
+
 module.exports = User;

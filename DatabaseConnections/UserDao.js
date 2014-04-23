@@ -5,13 +5,13 @@ function UserDao() {
 	
 }
 
-
+//set your own DB connection
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'dk',
-  port: '3306',
-  database: 'test'
+  password : 'root', 
+  port: '8889',  //3306
+  database: 'videolib' //test
 });
 
 UserDao.prototype.validateUser = function(callback, username, password){
@@ -58,6 +58,27 @@ UserDao.prototype.signUp = function(callback, username, password){
 	
 	
 };
+
+//DB delete User (member_types , person, orders)
+UserDao.prototype.removeUser = function (callback, memberTypeID){
+	console.log("DAOremove ");
+	connection = mysql.createConnection(connection.config);
+	connection.connect();
+	var sql = 'DELETE FROM Member_Types WHERE MemberTypeID = '+memberTypeID;
+	console.log(sql);
+	connection.query(sql,function(err,result){
+		if(err){
+			var error = err.toString();
+			console.log(error);
+		}else{
+		    var numRows = result.affectedRows;
+			console.log(numRows);
+			console.log("deleting User");
+			callback(err,numRows);
+			connection.end();
+		}
+	});
+}
 
 module.exports = UserDao;
 
