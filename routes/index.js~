@@ -5,7 +5,7 @@ var order = require('../Model/Order');
 var ejs = require("ejs");
 
 // hadrcoded value. we need to get the value from session
-var membershipid ="937-49-3682";
+var membershipid ="3";
 
 
 exports.index = function(req, res){
@@ -152,22 +152,4 @@ exports.viewHistory =function(req,res){
 };
 
 
-exports.updateuser =function(req,res){
-	req.body.MemberShipID = "937-49-3682";
-	console.log("Update user");
-	var newUser = new user();
-	newUser.updateUser(function(err,result) {
-		if(err){
-			console.log("Error"+err);
-			throw(err);
-		}else
-		{
-			console.log(result.membershipID);
-			res.render('Welcome.ejs',{name:result.data.FirstName,membershipID:result.data.MemberShipID});
-			//console.log(res);
-		}
-
-	},req.body);
-	
-};
 

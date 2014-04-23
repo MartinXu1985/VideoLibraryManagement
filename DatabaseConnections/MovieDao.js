@@ -8,8 +8,8 @@ function MovieDao() {
 
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : 'Helloworld',
+  user     : '273',
+  password : 'varun',
   port: '3306',
   database: 'videolib'
 });

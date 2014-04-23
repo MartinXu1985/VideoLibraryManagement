@@ -41,7 +41,6 @@ User.prototype.updateUser = function(callback,request)
 	},request.MemberShipID,request.fname,request.lname,request.address,request.city,request.zip,request.state,request.membertype);
 
 };
-
 User.prototype.viewCustomers = function(callback,request)
 {
 	

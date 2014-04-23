@@ -43,6 +43,8 @@ app.post('/createUser', routes.createUser);
 app.get('/listMovies', routes.listMovies);
 app.get('/viewCustomers', routes.viewCustomers);
 app.get('/viewHistory', routes.viewHistory);
+app.get('/updateUser',routes.updateUser);
+app.post('/updateuser', routes.updateuser);
 
 
 http.createServer(app).listen(app.get('port'), function(){
