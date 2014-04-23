@@ -13,7 +13,7 @@ User.prototype.validateUser = function(callback,request)
 
 	console.log("user function ");
 	
-	userobj.signUp(function(err,res) {
+	userobj.validateUser(function(err,res) {
 		callback(err,res);
 		
 	},request.userName,request.password);

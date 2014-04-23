@@ -1,17 +1,21 @@
 
 var user = require('../Model/User');
 var movie = require('../Model/Movie');
+var order = require('../Model/Order');
 var ejs = require("ejs");
+
+// hadrcoded value. we need to get the value from session
+var membershipid ="3";
+
+
 exports.index = function(req, res){
 	console.log("index");
   res.render('index', { title: 'Express' });
   
 };
 
-
-
 exports.userSignIn =function(req,res){
-	console.log("signup");
+	console.log("user sign in");
 	res.render('SignUp');
 };
 exports.signUp =function(req,res){
@@ -22,7 +26,6 @@ exports.signUp =function(req,res){
 exports.validateUser =function(req,res){
 	console.log("validate user");
 	var newUser = new user();
-	//newUser.validateUser(req.param('username'), req.param('password'));
 	newUser.validateUser(function(err,result) {
 		if(err){
 			console.log("Error"+err);
@@ -33,7 +36,8 @@ exports.validateUser =function(req,res){
 		}
 
 	},req.body);
-	console.log("Username"+ req.param('userName'));
+	
+	console.log("Username "+ req.param('userName'));
 };
 
 exports.createUser =function(req,res){
@@ -111,6 +115,36 @@ exports.viewCustomers =function(req,res){
 		}
 
 	},req.body);
+};
+
+
+exports.viewHistory =function(req,res){
+	console.log("view history");
+	var orders = new order();
+	
+	orders.viewHistory(function(err,result) {
+		if(err){
+			console.log("Error"+err);
+			throw(err);
+		}else
+		{
+			ejs.renderFile('views/ViewHistory.ejs', {
+				result : result
+			}, function(err, result) {
+				// render on success
+				if (!err) {
+					res.end(result);
+				}
+				// render or error
+				else {
+					res.end('An error occurred in rendering page');
+					console.log(err);
+				}
+			});
+		}
+		// instead ofmembership id which is hardcoded, here we need to send the value from session
+
+	},membershipid);
 };
 
 

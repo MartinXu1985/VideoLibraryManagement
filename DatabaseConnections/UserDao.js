@@ -14,12 +14,12 @@ var connection = mysql.createConnection({
   database: 'videolib'
 });
 
-UserDao.prototype.validateUser = function(callback, username, password){
+UserDao.prototype.validateUser = function(callback, membershipId, password){
 	
 	connection.connect();
 	//console.log("USERNAME: " + username + " Password: " + password);
 	
-	var sql = 'SELECT * FROM USER_DATA WHERE FNAME="' + username + '" AND PASSWORD="' + password + '"';
+	var sql = 'SELECT * FROM person WHERE MemberShipID="' + membershipId + '" AND PASSWORD="' + password + '"';
 	
 	connection.query(sql, function(err, rows, fields) {
 		if (rows.length !== 0) {
