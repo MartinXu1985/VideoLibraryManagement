@@ -23,6 +23,12 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(express.cookieParser());
+app.use(express.session({
+	secret : '1234567890QWERTY'
+}));
+
 // development only
 if ('development' === app.get('env')) {
   app.use(express.errorHandler());
@@ -37,6 +43,12 @@ app.post('/createUser', routes.createUser);
 app.get('/removeUser',routes.removeUser);
 app.get('/generateBill',routes.generateBill);
 app.post('/payBill/:data',routes.payBill);
+app.get('/listMovies', routes.listMovies);
+app.get('/viewCustomers', routes.viewCustomers);
+app.get('/viewHistory', routes.viewHistory);
+app.get('/updateUser',routes.updateUser);
+app.post('/updateuser', routes.updateuser);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

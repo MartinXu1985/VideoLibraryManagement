@@ -31,16 +31,6 @@ User.prototype.signUp = function(callback,request)
 
 };
 
-
-//removeUser Model
-User.prototype.remove = function(callback,memberTypeID){
-	
-	console.log("removeUser function "+memberTypeID);
-	userobj.removeUser(function(err,res){
-		callback(err,res);
-	},memberTypeID);
-};
-
 User.prototype.updateUser = function(callback,request)
 {
 	console.log("Update User function ");
@@ -51,7 +41,6 @@ User.prototype.updateUser = function(callback,request)
 	},request.MemberShipID,request.fname,request.lname,request.address,request.city,request.zip,request.state,request.membertype);
 
 };
-
 User.prototype.viewCustomers = function(callback,request)
 {
 	
@@ -60,7 +49,6 @@ User.prototype.viewCustomers = function(callback,request)
 		callback(err,res);
 		
 	},request.userName,request.password);
-
 
 };
 
