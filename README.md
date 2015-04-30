@@ -1,7 +1,7 @@
 
 
 # VideoLibraryMgmt
-offline vedio library management system. 
+Offline vedio library management system. 
 user role: customer, member, admin.
 function: signin/signup, rent/return, billing payment, admin management interface.
 node.js, express.js framework. mysql DB.
